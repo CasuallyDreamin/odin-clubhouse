@@ -25,7 +25,10 @@ async function startServer() {
     app.use(session(sessionConfig));
     app.use(setUserLocals);
 
-    // Routes
+    app.use(express.static('public'));
+    app.set('view engine', 'ejs');
+    
+      // Routes
     app.use('/auth', authRoutes);
     app.use('/posts', postRoutes);
     app.use('/comments', commentRoutes);
