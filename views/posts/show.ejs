@@ -4,8 +4,8 @@
     <div class="post-meta">
       <% if (user) { %>
         <span>by <%= post.username %></span> • 
-      <% } %>
       <span><%= post.created_at.toLocaleDateString() %></span>
+      <% } %>
     </div>
     <p class="post-body"><%= post.body %></p>
   </article>
@@ -32,8 +32,8 @@
             <div class="comment-meta">
               <% if (user) { %>
                 <span><%= comment.username %></span> • 
-              <% } %>
-              <span><%= comment.created_at.toLocaleDateString() %></span>
+                <span><%= comment.created_at.toLocaleDateString() %></span>
+              <% } %>  
             </div>
           <p class="comment-body"><%= comment.body %></p>
         </div>

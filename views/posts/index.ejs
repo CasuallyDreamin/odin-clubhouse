@@ -11,8 +11,8 @@
       <div class="post-meta">
         <% if (user) { %>
           <span class="author">by <%= post.username %></span> • 
+          <span><%= post.created_at.toLocaleDateString() %></span>
         <% } %>
-        <span><%= post.created_at.toLocaleDateString() %></span>
       </div>
     </button>
   <% }) %>
