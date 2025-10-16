@@ -23,10 +23,10 @@ export async function getPostById(id) {
 }
 
 // Create a new post
-export async function createPost(userId, body) {
+export async function createPost(userId, title, body) {
   const result = await pool.query(
-    'INSERT INTO posts (user_id, body) VALUES ($1, $2) RETURNING *',
-    [userId, body]
+    'INSERT INTO posts (user_id, title, body) VALUES ($1, $2, $3) RETURNING *',
+    [userId, title, body]
   );
   return result.rows[0];
 }

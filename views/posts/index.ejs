@@ -1,6 +1,4 @@
-<% layout('layouts/main', { title: "Clubhouse Feed" }) %>
-
-<h1 class="page-title">Public Feed</h1>
+<h1 class="page-title">Feed</h1>
 
 <div class="post-list">
   <% if (posts.length === 0) { %>
@@ -8,15 +6,14 @@
   <% } %>
 
   <% posts.forEach(post => { %>
-    <div class="post-card">
+    <button class="post-card" onClick="location.href='/posts/<%= post.id %>'">
       <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
-      <p><%= post.body %></p>
       <div class="post-meta">
         <% if (user) { %>
-          <span>by <%= post.author %></span> • 
+          <span class="author">by <%= post.username %></span> • 
         <% } %>
         <span><%= post.created_at.toLocaleDateString() %></span>
       </div>
-    </div>
+    </button>
   <% }) %>
 </div>

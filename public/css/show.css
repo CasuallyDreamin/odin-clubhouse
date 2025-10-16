@@ -1,0 +1,120 @@
+/* show.css */
+
+/* Container for the show page */
+.post-show-container {
+  max-width: var(--max-width);
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Post details */
+.post-detail {
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.post-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.post-body {
+  color: var(--text);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comment-card {
+  background: #222;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius);
+}
+
+.comment-body {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.comment-meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Comment form */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment-form textarea {
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid #444;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
+
+.comment-form button {
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.comment-form button:hover {
+  background: #2e88d9;
+}
+
+/* Muted text */
+.muted-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .post-detail {
+    padding: 1.5rem;
+  }
+
+  .post-title {
+    font-size: 1.6rem;
+  }
+
+  .post-body, .comment-body, .comment-form textarea {
+    font-size: 1rem;
+  }
+}

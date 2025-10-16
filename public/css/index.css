@@ -8,6 +8,18 @@
   --success: #27ae60;
   --radius: 8px;
   --max-width: 900px;
+
+  /* Font sizes */
+  --font-base: 1rem;      /* 16px */
+  --font-lg: 1.25rem;     /* 20px */
+  --font-xl: 1.5rem;      /* 24px */
+  --font-xxl: 2rem;       /* 32px */
+
+  /* Spacing scale */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
 }
 
 * {
@@ -20,6 +32,8 @@ body {
   font-family: system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
+  font-size: var(--font-base);
+  line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,9 +42,104 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  font-size: var(--font-lg);
 }
 
 button {
   font: inherit;
   cursor: pointer;
+  font-size: var(--font-lg);
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+}
+
+.main-container {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: var(--spacing-lg) auto;
+  padding: 0 var(--spacing-sm);
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: var(--font-xxl);
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: var(--font-xl);
+}
+
+h3 {
+  font-size: var(--font-lg);
+}
+
+p {
+  color: var(--muted);
+  font-size: var(--font-lg);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* Forms */
+input, textarea, select {
+  font-size: var(--font-lg);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--muted);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Responsive scaling */
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+
+  button {
+    font-size: 1.125rem;
+    padding: 1rem 1.5rem;
+  }
+
+  input, textarea, select {
+    font-size: 1.125rem;
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2rem; }
+
+  button {
+    font-size: 1.25rem;
+    padding: 1.25rem 2rem;
+  }
+
+  input, textarea, select {
+    font-size: 1.25rem;
+    padding: 1.25rem 1.5rem;
+  }
 }

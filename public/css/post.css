@@ -5,6 +5,8 @@
 }
 
 .post-card {
+  display: flex;
+  justify-content: space-between;
   background: var(--card-bg);
   border: 1px solid #222;
   padding: 1rem;
@@ -27,8 +29,12 @@
   font-size: 0.95rem;
 }
 
+.author {
+  color: var(--text)
+}
 .post-meta {
   margin-top: 0.5rem;
   font-size: 0.8rem;
   color: var(--muted);
 }
+

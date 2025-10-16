@@ -23,8 +23,9 @@ router.post('/post/:postId', ensureAuthenticated, async (req, res) => {
   if (!body) return res.status(400).json({ error: 'Comment cannot be empty.' });
 
   await createComment(userId, postId, body);
-  res.json({ success: true });
+  res.redirect(`/posts/${postId}`);
 });
+
 
 // Delete a comment (admin or author only — placeholder for now)
 router.delete('/:commentId', ensureAuthenticated, async (req, res) => {

@@ -10,21 +10,21 @@ const router = express.Router();
 router.get('/', async (req, res) => {
   const posts = await getAllPosts();
   const loggedIn = !!req.session.user;
-
-  res.render('posts/index', { posts, loggedIn });
+  const title = "Clubhouse";
+  res.render('posts/index', { title, posts, loggedIn, error: null });
 });
 
 // Show create post form
 router.get('/create', ensureAuthenticated, (req, res) => {
-  res.render('posts/create');
+  res.render('posts/create', { title: "New Post", error: null});
 });
 
 // Handle post creation
 router.post('/create', ensureAuthenticated, async (req, res) => {
-  const { body } = req.body;
-  if (!body) return res.render('posts/create', { error: 'Post cannot be empty.' });
+  const {title, body} = req.body;
+  if (!title || !body) return res.render('posts/create', { title: "New Post", error: 'Post cannot be empty.' });
 
-  await createPost(req.session.user.id, body);
+  await createPost(req.session.user.id, title, body);
   res.redirect('/posts');
 });
 
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
   const likesCount = await countLikes(post.id);
   const loggedIn = !!req.session.user;
 
-  res.render('posts/show', { post, comments, likesCount, loggedIn });
+  res.render('posts/show', {  title: "New Post", error: null, post, comments, likesCount, loggedIn });
 });
 
 // Handle liking/unliking a post

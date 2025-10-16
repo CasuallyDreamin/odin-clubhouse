@@ -1,44 +1,45 @@
-<% layout('layouts/main', { title: post.title }) %>
-
-<div class="post-card">
-  <h2><%= post.title %></h2>
-  <p><%= post.body %></p>
-
-  <div class="post-meta">
-    <% if (user) { %>
-      <span>by <%= post.author %></span> • 
-    <% } %>
-    <span><%= post.created_at.toLocaleDateString() %></span>
-  </div>
-</div>
-
-<hr />
-
-<h3>Comments</h3>
-
-<div class="comment-list">
-  <% if (comments.length === 0) { %>
-    <p class="muted-text">No comments yet.</p>
-  <% } %>
-
-  <% comments.forEach(comment => { %>
-    <div class="post-card">
-      <p><%= comment.body %></p>
-      <div class="post-meta">
-        <% if (user) { %>
-          <span>by <%= comment.author %></span> • 
-        <% } %>
-        <span><%= comment.created_at.toLocaleDateString() %></span>
-      </div>
+<div class="post-show-container">
+  <article class="post-detail">
+    <h1 class="post-title"><%= post.title %></h1>
+    <div class="post-meta">
+      <% if (user) { %>
+        <span>by <%= post.username %></span> • 
+      <% } %>
+      <span><%= post.created_at.toLocaleDateString() %></span>
     </div>
-  <% }) %>
+    <p class="post-body"><%= post.body %></p>
+  </article>
+
+  <section class="comments-section">
+    <h2>Comments</h2>
+
+    <% if (comments.length === 0) { %>
+      <p class="muted-text">No comments yet.</p>
+    <% } %>
+
+    <div class="comment-list">
+      <% comments.forEach(comment => { %>
+        <div class="comment-card">
+            <div class="comment-meta">
+              <% if (user) { %>
+                <span><%= comment.username %></span> • 
+              <% } %>
+              <span><%= comment.created_at.toLocaleDateString() %></span>
+            </div>
+          <p class="comment-body"><%= comment.body %></p>
+        </div>
+      <% }) %>
+    </div>
+
+    <% if (user) { %>
+      <form action="/comments/post/<%= post.id %>" method="POST" class="comment-form">
+        <textarea name="body" rows="4" placeholder="Add a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+    <% } else { %>
+      <p class="muted-text">Login to comment.</p>
+    <% } %>
+  </section>
 </div>
 
-<% if (user) { %>
-  <form action="/comments/<%= post.id %>" method="POST" class="comment-form">
-    <textarea name="body" rows="3" required></textarea>
-    <button type="submit">Add Comment</button>
-  </form>
-<% } else { %>
-  <p class="muted-text">Login to comment.</p>
-<% } %>
+<link rel="stylesheet" href="/css/show.css">

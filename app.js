@@ -1,5 +1,4 @@
 import express from 'express';
-import session from 'express-session';
 import pool from './config/db.js';
 import sessionConfig from './config/session.js';
 import { initDB } from './db/init.js';
@@ -7,7 +6,7 @@ import authRoutes from './routes/auth.js';
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
 import { setUserLocals } from './utils/authMiddleware.js';
-
+import expressLayouts from "express-ejs-layouts";
 
 const app = express();
 
@@ -28,7 +27,8 @@ async function startServer() {
 
     app.use(express.static('public'));
     app.set('view engine', 'ejs');
-    
+    app.use(expressLayouts);
+    app.set("layout", "layouts/main");
     // Routes
     app.use('/auth', authRoutes);
     app.use('/posts', postRoutes);
