@@ -7,6 +7,8 @@ import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
 import { setUserLocals } from './utils/authMiddleware.js';
 import expressLayouts from "express-ejs-layouts";
+import ensureSecretEntered from './utils/secretMiddleware.js';
+import secretRoutes from './routes/secret.js';
 
 const app = express();
 
@@ -29,6 +31,10 @@ async function startServer() {
     app.set('view engine', 'ejs');
     app.use(expressLayouts);
     app.set("layout", "layouts/main");
+    
+    app.use('/enter', secretRoutes);
+    app.use(ensureSecretEntered);
+    
     // Routes
     app.use('/auth', authRoutes);
     app.use('/posts', postRoutes);

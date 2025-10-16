@@ -17,6 +17,15 @@
       <p class="muted-text">No comments yet.</p>
     <% } %>
 
+    <% if (user) { %>
+      <form action="/comments/post/<%= post.id %>" method="POST" class="comment-form">
+        <textarea name="body" rows="4" placeholder="Add a comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+    <% } else { %>
+      <p class="muted-text">Login to comment.</p>
+    <% } %>
+
     <div class="comment-list">
       <% comments.forEach(comment => { %>
         <div class="comment-card">
@@ -31,14 +40,6 @@
       <% }) %>
     </div>
 
-    <% if (user) { %>
-      <form action="/comments/post/<%= post.id %>" method="POST" class="comment-form">
-        <textarea name="body" rows="4" placeholder="Add a comment..." required></textarea>
-        <button type="submit">Post Comment</button>
-      </form>
-    <% } else { %>
-      <p class="muted-text">Login to comment.</p>
-    <% } %>
   </section>
 </div>
 

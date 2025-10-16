@@ -26,12 +26,17 @@
 }
 
 .nav-link {
+  background: none;
+  border: 1px solid var(--muted);
   color: var(--muted);
-  transition: color 0.2s ease;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--accent);
+  color: var(--success);
+  border-color: var(--success);
 }
 
 .logout-form {
@@ -48,6 +53,6 @@
 }
 
 .logout-btn:hover {
-  color: var(--text);
-  border-color: var(--accent);
+  color: var(--danger);
+  border-color: var(--danger);
 }
