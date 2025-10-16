@@ -1,0 +1,11 @@
+<% layout('layouts/main', { title: "Create Post" }) %>
+
+<div class="auth-container">
+  <h2>New Post</h2>
+
+  <form action="/posts/create" method="POST">
+    <input type="text" name="title" placeholder="Title" required />
+    <textarea name="body" rows="5" placeholder="What's on your mind?" required></textarea>
+    <button type="submit">Publish</button>
+  </form>
+</div>

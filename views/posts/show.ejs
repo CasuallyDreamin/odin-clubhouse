@@ -1,0 +1,44 @@
+<% layout('layouts/main', { title: post.title }) %>
+
+<div class="post-card">
+  <h2><%= post.title %></h2>
+  <p><%= post.body %></p>
+
+  <div class="post-meta">
+    <% if (user) { %>
+      <span>by <%= post.author %></span> • 
+    <% } %>
+    <span><%= post.created_at.toLocaleDateString() %></span>
+  </div>
+</div>
+
+<hr />
+
+<h3>Comments</h3>
+
+<div class="comment-list">
+  <% if (comments.length === 0) { %>
+    <p class="muted-text">No comments yet.</p>
+  <% } %>
+
+  <% comments.forEach(comment => { %>
+    <div class="post-card">
+      <p><%= comment.body %></p>
+      <div class="post-meta">
+        <% if (user) { %>
+          <span>by <%= comment.author %></span> • 
+        <% } %>
+        <span><%= comment.created_at.toLocaleDateString() %></span>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<% if (user) { %>
+  <form action="/comments/<%= post.id %>" method="POST" class="comment-form">
+    <textarea name="body" rows="3" required></textarea>
+    <button type="submit">Add Comment</button>
+  </form>
+<% } else { %>
+  <p class="muted-text">Login to comment.</p>
+<% } %>

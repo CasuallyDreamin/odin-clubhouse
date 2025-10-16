@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo">Clubhouse</a>
+
+    <nav class="nav">
+      <a href="/" class="nav-link">Home</a>
+      <% if (user) { %>
+        <a href="/posts/create" class="nav-link">New Post</a>
+        <form action="/auth/logout" method="POST" class="logout-form">
+          <button type="submit" class="logout-btn">Logout</button>
+        </form>
+      <% } else { %>
+        <a href="/auth/login" class="nav-link">Login</a>
+        <a href="/auth/register" class="nav-link">Register</a>
+      <% } %>
+    </nav>
+  </div>
+</header>

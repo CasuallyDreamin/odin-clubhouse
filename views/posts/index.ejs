@@ -1,0 +1,22 @@
+<% layout('layouts/main', { title: "Clubhouse Feed" }) %>
+
+<h1 class="page-title">Public Feed</h1>
+
+<div class="post-list">
+  <% if (posts.length === 0) { %>
+    <p class="muted-text">No posts yet.</p>
+  <% } %>
+
+  <% posts.forEach(post => { %>
+    <div class="post-card">
+      <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+      <p><%= post.body %></p>
+      <div class="post-meta">
+        <% if (user) { %>
+          <span>by <%= post.author %></span> • 
+        <% } %>
+        <span><%= post.created_at.toLocaleDateString() %></span>
+      </div>
+    </div>
+  <% }) %>
+</div>
