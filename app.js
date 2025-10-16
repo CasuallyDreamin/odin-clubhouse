@@ -8,6 +8,7 @@ import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
 import { setUserLocals } from './utils/authMiddleware.js';
 
+
 const app = express();
 
 async function startServer() {
@@ -22,13 +23,13 @@ async function startServer() {
     // Middleware
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
-    app.use(session(sessionConfig));
+    app.use(sessionConfig);
     app.use(setUserLocals);
 
     app.use(express.static('public'));
     app.set('view engine', 'ejs');
     
-      // Routes
+    // Routes
     app.use('/auth', authRoutes);
     app.use('/posts', postRoutes);
     app.use('/comments', commentRoutes);
@@ -40,7 +41,7 @@ async function startServer() {
 
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server running at http://localhost:${PORT}`);
     });
   } catch (err) {
     console.error('Failed to start server:', err);

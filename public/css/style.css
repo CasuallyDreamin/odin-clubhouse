@@ -1,4 +1,4 @@
-/* Reset some default styles */
+@import "index.css";/* Reset some default styles */
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ header h1 {
 nav a {
   margin-left: 1rem;
   text-decoration: none;
-  color: #1d4ed8; /* blue */
+  color: #1d4ed8;
 }
 
 main {
@@ -36,6 +36,14 @@ main {
   margin: 2rem auto;
   padding: 0 1rem;
 }
+
+.main-content {
+  flex: 1;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
 
 button {
   padding: 0.5rem 1rem;
